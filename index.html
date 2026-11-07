@@ -11,7 +11,13 @@
 <meta property="og:locale" data-i18n-attr="content:meta.locale" content="fr_FR">
 <meta property="og:title" data-i18n-attr="content:meta.title" content="Tyrian Energy — Ingénierie pluridisciplinaire à distance | Gestion de projet, électricité, mécanique, énergie">
 <meta property="og:description" data-i18n-attr="content:meta.desc" content="Équipe d’ingénierie pluridisciplinaire basée en Tunisie : gestion de projet, électricité, mécanique, énergie &amp; carbone, données. 100 % à distance, pour vos projets partout dans le monde.">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://firasjallouz404.github.io/test/">
+<meta property="og:image" content="https://firasjallouz404.github.io/test/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="Tyrian Energy — Votre équipe d’ingénierie, sans recruter.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://firasjallouz404.github.io/test/og-image.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%2366023C'/%3E%3Cg transform='translate(20 20) scale(.8) translate(-20 -20)' fill='none' stroke-width='2.6' stroke-linecap='round'%3E%3Ccircle cx='20' cy='20' r='16' stroke='%23FAF7F5'/%3E%3Cpath d='M6 20Q10.6 2 15.2 20T24.4 20Q29 14 33.6 20' stroke='%23F2A93B'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -557,6 +563,73 @@ button{font:inherit;color:inherit}
 .proj-more{margin-top:24px}
 .ref-meta.stack{flex-direction:column;align-items:flex-start;gap:10px}
 
+/* ---------- audit: comparison table, pilot price, sticky CTA, consent, honeypot ---------- */
+.hero-note{margin-top:.85rem;font:500 .7rem/1.4 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.compare-foot .hero-note{margin-top:0}
+.price .amount{font:500 1.1rem/1 var(--f-display);color:var(--ink)}
+.compare{margin-top:clamp(40px,5vw,64px);padding:6px clamp(6px,1.6vw,20px);overflow:hidden}
+.compare-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.95rem;line-height:1.45}
+.compare-table th,.compare-table td{text-align:left;vertical-align:top;padding:15px 16px;border-bottom:1px solid var(--line-soft)}
+.compare-table tbody tr:last-child > *{border-bottom:0}
+.compare-table thead th{font:500 .68rem/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:18px;padding-bottom:14px}
+.compare-table tbody th{font:450 1.04rem/1.3 var(--f-display);color:var(--ink);width:22%}
+.compare-table td{color:var(--muted);width:23%}
+.compare-table .us{background:var(--purple-tint);color:var(--ink);font-weight:500;width:32%}
+.compare-table thead .us{color:var(--purple);border-radius:12px 12px 0 0}
+.compare-table tbody tr:last-child .us{border-radius:0 0 12px 12px}
+.compare-table .us > span{display:flex;gap:8px;align-items:flex-start}
+.compare-table .us svg{flex:none;width:16px;height:16px;margin-top:2px;color:var(--purple);stroke-width:2.2}
+.compare-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:28px}
+@media (max-width:719px){
+  .compare{padding:0}
+  .compare-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+  .compare-table,.compare-table tbody,.compare-table th,.compare-table td{display:block;width:auto}
+  .compare-table tr{display:flex;flex-direction:column;padding:14px 16px;border-bottom:1px solid var(--line-soft)}
+  .compare-table tbody tr:last-child{border-bottom:0}
+  .compare-table tbody th{order:0;width:auto;padding:0 0 6px;border:0;font-size:1.02rem}
+  .compare-table td{border:0}
+  .compare-table td.us{order:1;width:auto;margin:0 0 6px;padding:8px 10px;border-radius:10px;font-size:.92rem}
+  .compare-table tbody tr:last-child .us{border-radius:10px}
+  .compare-table td:not(.us){order:2;width:auto;padding:1px 0;font-size:.82rem;line-height:1.5}
+  .compare-table td:not(.us)::before{content:attr(data-label) "\00a0: ";color:var(--ink);font-weight:500}
+  :lang(en) .compare-table td:not(.us)::before{content:attr(data-label) ": "}
+}
+.hp{position:absolute!important;left:-10000px;width:1px;height:1px;overflow:hidden}
+.form-note a{color:inherit}
+.footer-legal a{text-decoration:none;transition:color .2s}
+.footer-legal a:hover{color:var(--amber)}
+.mobile-cta{display:none}
+@media (max-width:599px){
+  .mobile-cta{position:fixed;z-index:60;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 16px;background:var(--ink);border-radius:16px;box-shadow:0 18px 40px -12px rgba(26,20,36,.55);transform:translateY(150%);visibility:hidden;transition:transform .35s var(--ease),visibility 0s linear .35s}
+  .mobile-cta.show{transform:none;visibility:visible;transition:transform .35s var(--ease)}
+  .mobile-cta strong{display:block;font:450 1rem/1.2 var(--f-display)}
+  .mobile-cta span{display:block;margin-top:2px;font:500 .62rem/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted-dark)}
+}
+.consent{position:fixed;z-index:70;left:16px;bottom:16px;max-width:420px;padding:18px 18px 16px;background:var(--ink);border-radius:16px;box-shadow:0 24px 50px -18px rgba(0,0,0,.6);font-size:.9rem;line-height:1.5}
+.consent a{color:var(--amber)}
+.consent-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+@media (max-width:599px){.consent{left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:none}}
+
+/* ---------- audit: shorter phone page (cards swipe sideways, tighter spacing) ---------- */
+@media (max-width:639px){
+  .section{padding-block:56px}
+  .swipe{display:grid;grid-auto-flow:column;grid-auto-columns:86%;grid-template-columns:none;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * var(--gutter));padding:4px var(--gutter) 18px;scroll-padding-inline:var(--gutter);scrollbar-width:none}
+  .swipe::-webkit-scrollbar{display:none}
+  .swipe > *{scroll-snap-align:start}
+  .swipe .card:hover,.swipe .service:hover{transform:none}
+  .swipe-hint{display:flex}
+  .minis{display:none}
+  .timeline{gap:28px}
+  .timeline .step-meta{display:none}
+  .sectors .sector p{display:none}
+}
+.swipe-hint{display:none;align-items:center;gap:.5rem;margin-top:4px;font:500 .64rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:479px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px 20px}
+  .footer-brand{grid-column:1 / -1}
+  .footer-col a,.footer-col span{overflow-wrap:anywhere}
+}
+
 /* ---------- Print ---------- */
 @media print{
   .site-header,.hero-visual,.nav-toggle,.form,.skip{display:none!important}
@@ -603,6 +676,8 @@ button{font:inherit;color:inherit}
     <symbol id="i-public" viewBox="0 0 24 24"><path d="M3 9 12 4l9 5z"/><path d="M5.5 9v8.5M10 9v8.5M14 9v8.5M18.5 9v8.5"/><path d="M3.5 17.5h17M2.5 20.5h19"/></symbol>
     <symbol id="i-tower" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="1.6"/><path d="m9 21 3-11.9L15 21"/><path d="M10.1 16.5h3.8"/><path d="M8.6 4.3a4.8 4.8 0 0 0 0 6.4M15.4 4.3a4.8 4.8 0 0 1 0 6.4"/><path d="M6 2a8.4 8.4 0 0 0 0 11M18 2a8.4 8.4 0 0 1 0 11"/></symbol>
     <symbol id="i-cement" viewBox="0 0 24 24"><path d="M3.5 20.5V7.5a2.75 2.75 0 0 1 5.5 0v13"/><path d="M3.5 11h5.5"/><path d="m9 15.5 11.5-4v3.2L9 18.7"/><path d="M13 14.1v3.2M17 12.7v3.2"/><path d="M1.5 20.5h21"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 7"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.1A8 8 0 1 1 20 11.5z"/><path d="M9 10.5h.01M12 10.5h.01M15 10.5h.01"/></symbol>
     <!-- v2 icons -->
     <symbol id="i-gear" viewBox="0 0 24 24"><path d="M10.3 2.5h3.4l.5 2.4 1.7.7 2-1.3 2.4 2.4-1.3 2 .7 1.7 2.4.5v3.4l-2.4.5-.7 1.7 1.3 2-2.4 2.4-2-1.3-1.7.7-.5 2.4h-3.4l-.5-2.4-1.7-.7-2 1.3-2.4-2.4 1.3-2-.7-1.7-2.4-.5v-3.4l2.4-.5.7-1.7-1.3-2 2.4-2.4 2 1.3 1.7-.7z"/><circle cx="12" cy="12" r="3.2"/></symbol>
     <symbol id="i-schematic" viewBox="0 0 24 24"><path d="M2.5 12h4M6.5 7.5v9M9.5 7.5v9M9.5 12h2.5l1.5-3 2 6 2-6 1.5 3h2.5"/></symbol>
@@ -637,10 +712,10 @@ button{font:inherit;color:inherit}
 
     <nav class="nav" id="site-nav" data-i18n-attr="aria-label:nav.aria" aria-label="Navigation principale">
       <ul>
+        <li><a href="#confiance" data-i18n="nav.why">Pourquoi nous</a></li>
         <li><a href="#expertises" data-i18n="nav.expertise">Expertises</a></li>
         <li><a href="#distance" data-i18n="nav.remote">À distance</a></li>
         <li><a href="#formules" data-i18n="nav.models">Formules</a></li>
-        <li><a href="#qualite" data-i18n="nav.quality">Qualité</a></li>
         <li><a href="#equipe" data-i18n="nav.team">Équipe</a></li>
         <li><a href="#projets" data-i18n="nav.projects">Projets</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
@@ -677,10 +752,11 @@ button{font:inherit;color:inherit}
         <a class="btn btn-amber" href="#contact"><span data-i18n="cta.pilot">Lancer un projet pilote</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <a class="btn btn-ghost" href="#contact" data-booking hidden><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg><span data-i18n="cta.call">Réserver un appel</span></a>
       </div>
+      <p class="hero-note" data-i18n="pilot.note">5 jours · dès 390&nbsp;€ HT · sans engagement</p>
       <ol class="tagline" data-i18n-attr="aria-label:hero.tagline.aria" aria-label="Notre devise">
-        <li><span class="n">01</span><span data-i18n="tag.1">Mesurer.</span></li>
-        <li><span class="n">02</span><span data-i18n="tag.2">Comprendre.</span></li>
-        <li><span class="n">03</span><span data-i18n="tag.3">Économiser.</span></li>
+        <li><span class="n">01</span><span data-i18n="tag.1">Concevoir.</span></li>
+        <li><span class="n">02</span><span data-i18n="tag.2">Piloter.</span></li>
+        <li><span class="n">03</span><span data-i18n="tag.3">Optimiser.</span></li>
       </ol>
     </div>
 
@@ -796,7 +872,7 @@ button{font:inherit;color:inherit}
   <div class="container">
     <ul class="trust-list">
       <li class="reveal"><svg class="ico" aria-hidden="true"><use href="#i-badge"/></svg><div><strong>CEM®</strong><span data-i18n="trust.cem">Certified Energy Manager dans l’équipe</span></div></li>
-      <li class="reveal"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><div><strong data-i18n="trust.team.t">Ingénierie pluridisciplinaire</strong><span data-i18n="trust.team">Équipe basée en Tunisie</span></div></li>
+      <li class="reveal"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><div><strong data-i18n="trust.team.t">Ingénierie pluridisciplinaire</strong><span data-i18n="trust.team">Équipe en Tunisie, même fuseau que l’Europe</span></div></li>
       <li class="reveal"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg><div><strong data-i18n="trust.reg.t">100&nbsp;% à distance</strong><span data-i18n="trust.reg">Europe · Golfe · Amérique du Nord · Afrique</span></div></li>
       <li class="reveal"><svg class="ico" aria-hidden="true"><use href="#i-lang"/></svg><div><strong>FR / EN / AR</strong><span data-i18n="trust.lang">Une équipe trilingue</span></div></li>
     </ul>
@@ -804,19 +880,58 @@ button{font:inherit;color:inherit}
 </section>
 
 <!-- ==========================================================================
-     01. Vos enjeux
+     01. Pourquoi nous — freelance vs. recrutement vs. Tyrian Energy
+     ========================================================================== -->
+<section class="section" id="confiance" aria-labelledby="why-title">
+  <div class="container">
+    <header class="section-head split">
+      <div>
+        <p class="kicker"><span class="kicker-num">01</span><span data-i18n="why.kicker">Pourquoi nous</span></p>
+        <h2 id="why-title" data-i18n="why.title">Ni freelance, <em>ni recrutement.</em></h2>
+      </div>
+      <p class="section-lead" data-i18n="why.lead">La souplesse d’un prestataire, la fiabilité d’une équipe. Comparez avant de choisir.</p>
+    </header>
+
+    <div class="card compare reveal">
+      <table class="compare-table">
+        <caption class="sr-only" data-i18n="cmp.caption">Comparaison&nbsp;: freelance, recrutement et Tyrian Energy</caption>
+        <thead>
+          <tr><th scope="col"><span class="sr-only" data-i18n="cmp.h0">Critère</span></th><th scope="col" data-i18n="cmp.h1">Freelance</th><th scope="col" data-i18n="cmp.h2">Recrutement</th><th scope="col" class="us">Tyrian Energy</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" data-i18n="cmp.r1">Démarrage</th><td data-label="Freelance" data-i18n-attr="data-label:cmp.h1" data-i18n="cmp.r1a">Variable</td><td data-label="Recrutement" data-i18n-attr="data-label:cmp.h2" data-i18n="cmp.r1b">Plusieurs mois</td><td class="us" data-label="Tyrian Energy"><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r1c">En quelques jours</span></span></td></tr>
+          <tr><th scope="row" data-i18n="cmp.r2">Continuité</th><td data-label="Freelance" data-i18n-attr="data-label:cmp.h1" data-i18n="cmp.r2a">Une seule personne</td><td data-label="Recrutement" data-i18n-attr="data-label:cmp.h2" data-i18n="cmp.r2b">Dépend d’un salarié</td><td class="us" data-label="Tyrian Energy"><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r2c">Équipe de 4&nbsp;: relais en cas d’absence</span></span></td></tr>
+          <tr><th scope="row" data-i18n="cmp.r3">Contrôle qualité</th><td data-label="Freelance" data-i18n-attr="data-label:cmp.h1" data-i18n="cmp.r3a">Auto-contrôle</td><td data-label="Recrutement" data-i18n-attr="data-label:cmp.h2" data-i18n="cmp.r3b">Selon votre organisation</td><td class="us" data-label="Tyrian Energy"><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r3c">Double vérification de chaque livrable</span></span></td></tr>
+          <tr><th scope="row" data-i18n="cmp.r4">Confidentialité &amp; propriété</th><td data-label="Freelance" data-i18n-attr="data-label:cmp.h1" data-i18n="cmp.r4a">À négocier</td><td data-label="Recrutement" data-i18n-attr="data-label:cmp.h2" data-i18n="cmp.r4b">Contrat de travail</td><td class="us" data-label="Tyrian Energy"><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r4c">NDA, propriété intellectuelle cédée, fichiers sources livrés</span></span></td></tr>
+          <tr><th scope="row" data-i18n="cmp.r5">Vos standards</th><td data-label="Freelance" data-i18n-attr="data-label:cmp.h1" data-i18n="cmp.r5a">Variable</td><td data-label="Recrutement" data-i18n-attr="data-label:cmp.h2" data-i18n="cmp.r5b">À former</td><td class="us" data-label="Tyrian Energy"><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r5c">Appliqués dès le pilote</span></span></td></tr>
+          <tr><th scope="row" data-i18n="cmp.r6">Disciplines</th><td data-label="Freelance" data-i18n-attr="data-label:cmp.h1" data-i18n="cmp.r6a">Une spécialité</td><td data-label="Recrutement" data-i18n-attr="data-label:cmp.h2" data-i18n="cmp.r6b">Un profil</td><td class="us" data-label="Tyrian Energy"><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r6c">4 expertises, un seul interlocuteur</span></span></td></tr>
+          <tr><th scope="row" data-i18n="cmp.r7">Coût</th><td data-label="Freelance" data-i18n-attr="data-label:cmp.h1" data-i18n="cmp.r7a">Souvent au temps passé</td><td data-label="Recrutement" data-i18n-attr="data-label:cmp.h2" data-i18n="cmp.r7b">Salaire et charges, à l’année</td><td class="us" data-label="Tyrian Energy"><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r7c">Prix fixe par mission</span></span></td></tr>
+          <tr><th scope="row" data-i18n="cmp.r8">Erreurs</th><td data-label="Freelance" data-i18n-attr="data-label:cmp.h1" data-i18n="cmp.r8a">Selon le contrat</td><td data-label="Recrutement" data-i18n-attr="data-label:cmp.h2" data-i18n="cmp.r8b">À votre charge</td><td class="us" data-label="Tyrian Energy"><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="cmp.r8c">Correction gratuite si l’erreur vient de nous</span></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="compare-foot reveal">
+      <a class="btn btn-amber" href="#contact"><span data-i18n="cta.pilot">Lancer un projet pilote</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <p class="hero-note" data-i18n="pilot.note">5 jours · dès 390&nbsp;€ HT · sans engagement</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     02. Vos enjeux
      ========================================================================== -->
 <section class="section" id="enjeux" aria-labelledby="pain-title">
   <div class="container">
     <header class="section-head split">
       <div>
-        <p class="kicker"><span class="kicker-num">01</span><span data-i18n="pain.kicker">Vos enjeux</span></p>
+        <p class="kicker"><span class="kicker-num">02</span><span data-i18n="pain.kicker">Vos enjeux</span></p>
         <h2 id="pain-title" data-i18n="pain.title">Vous vous <em>reconnaissez&nbsp;?</em></h2>
       </div>
       <p class="section-lead" data-i18n="pain.lead">Six situations, six réponses concrètes. Chacune est prise en charge par l’une de nos expertises.</p>
     </header>
 
-    <ul class="refs-grid stagger">
+    <ul class="refs-grid stagger swipe" data-i18n-attr="aria-label:swipe.pain" aria-label="Situations fréquentes">
       <li class="card service reveal">
         <div class="service-top"><span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></span><span class="tag" data-i18n="p1.tag">Externalisation</span></div>
         <h3><em data-i18n="p1.q">«&nbsp;Je n’ai pas d’équipe d’ingénierie et je n’arrive pas à recruter.&nbsp;»</em></h3>
@@ -854,23 +969,24 @@ button{font:inherit;color:inherit}
         <ul class="deliverables"><li data-i18n="p6.a">Renfort en marque blanche, sous votre nom.</li></ul>
       </li>
     </ul>
+    <p class="swipe-hint" aria-hidden="true"><span data-i18n="swipe.hint">Faites glisser</span> →</p>
   </div>
 </section>
 
 <!-- ==========================================================================
-     02. Expertises
+     03. Expertises
      ========================================================================== -->
 <section class="section" id="expertises" aria-labelledby="exp-title">
   <div class="container">
     <header class="section-head split">
       <div>
-        <p class="kicker"><span class="kicker-num">02</span><span data-i18n="ex.kicker">Expertises</span></p>
+        <p class="kicker"><span class="kicker-num">03</span><span data-i18n="ex.kicker">Expertises</span></p>
         <h2 id="exp-title" data-i18n="ex.title">Quatre disciplines, <em>un seul interlocuteur.</em></h2>
       </div>
-      <p class="section-lead" data-i18n="ex.lead">Gestion de projet, électricité, mécanique et énergie, complétées par les données et la marque blanche. Pour chaque expertise&nbsp;: le problème réglé, les livrables et les formats. Devis sous 48&nbsp;h.</p>
+      <p class="section-lead" data-i18n="ex.lead">De la faisabilité à l’exploitation, sur une seule discipline ou en combinant plusieurs. Pour chaque expertise&nbsp;: le problème réglé, les livrables et les formats. Devis sous 48&nbsp;h.</p>
     </header>
 
-    <ul class="refs-grid stagger">
+    <ul class="refs-grid stagger swipe" data-i18n-attr="aria-label:swipe.ex" aria-label="Nos expertises">
       <!-- Gestion de projet -->
       <li class="card service reveal">
         <div class="service-top"><span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-gantt"/></svg></span><span class="tag" data-i18n="d3.tag">Planning · Risques</span></div>
@@ -950,68 +1066,7 @@ button{font:inherit;color:inherit}
         <p class="price"><span data-i18n="formats">Formats livrés</span><span data-i18n="d6.formats">Vos formats et gabarits</span></p>
       </li>
     </ul>
-  </div>
-</section>
-
-<!-- ==========================================================================
-     03. Cycle de projet
-     ========================================================================== -->
-<section class="section" id="cycle" aria-labelledby="cycle-title">
-  <div class="container">
-    <header class="section-head split">
-      <div>
-        <p class="kicker"><span class="kicker-num">03</span><span data-i18n="cy.kicker">Cycle de projet</span></p>
-        <h2 id="cycle-title" data-i18n="cy.title">De la faisabilité <em>à l’exploitation.</em></h2>
-      </div>
-      <p class="section-lead" data-i18n="cy.lead">Nous intervenons à chaque phase de votre projet, sur une seule discipline ou en combinant plusieurs expertises.</p>
-    </header>
-
-    <ul class="services-grid stagger">
-      <li class="card service reveal">
-        <div class="service-top"><span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></span><span class="tag" data-i18n="cy.p1">Phase 01</span></div>
-        <h3 data-i18n="cy1.t">Faisabilité</h3>
-        <p class="value" data-i18n="cy1.v">Valider un projet avant d’investir.</p>
-        <ul class="deliverables">
-          <li data-i18n="cy1.d1">Audits énergétiques et études technico-économiques</li>
-          <li data-i18n="cy1.d2">Pré-faisabilité solaire PV</li>
-          <li data-i18n="cy1.d3">Planning préliminaire du projet</li>
-        </ul>
-        <p class="price"><span data-i18n="cy.disc">Expertises</span><span data-i18n="cy1.e">Énergie · Gestion de projet</span></p>
-      </li>
-      <li class="card service reveal">
-        <div class="service-top"><span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-gear"/></svg></span><span class="tag" data-i18n="cy.p2">Phase 02</span></div>
-        <h3 data-i18n="cy2.t">Conception</h3>
-        <p class="value" data-i18n="cy2.v">Concevoir et documenter.</p>
-        <ul class="deliverables">
-          <li data-i18n="cy2.d1">Modèles 3D et mises en plan</li>
-          <li data-i18n="cy2.d2">Schémas unifilaires et de commande</li>
-          <li data-i18n="cy2.d3">Nomenclatures</li>
-        </ul>
-        <p class="price"><span data-i18n="cy.disc">Expertises</span><span data-i18n="cy2.e">Mécanique · Électricité</span></p>
-      </li>
-      <li class="card service reveal">
-        <div class="service-top"><span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-gantt"/></svg></span><span class="tag" data-i18n="cy.p3">Phase 03</span></div>
-        <h3 data-i18n="cy3.t">Réalisation</h3>
-        <p class="value" data-i18n="cy3.v">Piloter l’exécution.</p>
-        <ul class="deliverables">
-          <li data-i18n="cy3.d1">Gestion de projet et suivi fournisseurs</li>
-          <li data-i18n="cy3.d2">Rapport hebdomadaire et gestion des risques</li>
-          <li data-i18n="cy3.d3">Plans de récolement</li>
-        </ul>
-        <p class="price"><span data-i18n="cy.disc">Expertises</span><span data-i18n="cy3.e">Gestion de projet · Électricité</span></p>
-      </li>
-      <li class="card service reveal">
-        <div class="service-top"><span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-dash"/></svg></span><span class="tag" data-i18n="cy.p4">Phase 04</span></div>
-        <h3 data-i18n="cy4.t">Exploitation</h3>
-        <p class="value" data-i18n="cy4.v">Mesurer et améliorer dans la durée.</p>
-        <ul class="deliverables">
-          <li data-i18n="cy4.d1">Comptage, M&amp;V (IPMVP) et tableaux de bord</li>
-          <li data-i18n="cy4.d2">Système de management ISO&nbsp;50001</li>
-          <li data-i18n="cy4.d3">Bilan GES et données CBAM</li>
-        </ul>
-        <p class="price"><span data-i18n="cy.disc">Expertises</span><span data-i18n="cy4.e">Énergie · Données</span></p>
-      </li>
-    </ul>
+    <p class="swipe-hint" aria-hidden="true"><span data-i18n="swipe.hint">Faites glisser</span> →</p>
   </div>
 </section>
 
@@ -1083,12 +1138,12 @@ button{font:inherit;color:inherit}
       <p class="section-lead" data-i18n="models.lead">Un appel découverte de 30&nbsp;minutes, une proposition sous 48&nbsp;h, puis un projet pilote pour nous tester. Ensuite, la formule suit votre charge de travail.</p>
     </header>
 
-    <ul class="services-grid stagger">
+    <ul class="services-grid stagger swipe" data-i18n-attr="aria-label:swipe.models" aria-label="Nos formules">
       <li class="card service reveal">
         <div class="service-top"><span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-report"/></svg></span><span class="tag" data-i18n="e1.tag">5 jours · Prix fixe</span></div>
         <h3 data-i18n="e1.title">Projet pilote</h3>
-        <p class="value" data-i18n="e1.value">Une pièce, un plan ou un schéma livré en 5&nbsp;jours, à prix fixe.</p>
-        <p class="price"><span data-i18n="best">Idéal pour</span><span data-i18n="e1.best">nous tester sans risque</span></p>
+        <p class="value" data-i18n="e1.value">Une pièce, un plan ou un schéma livré en 5&nbsp;jours, à prix fixe. Idéal pour nous tester sans risque.</p>
+        <p class="price"><span data-i18n="price.from">À partir de</span><span class="amount" data-i18n="e1.price">390&nbsp;€ HT</span></p>
       </li>
       <li class="card service reveal">
         <div class="service-top"><span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg></span><span class="tag" data-i18n="e2.tag">Forfait</span></div>
@@ -1112,46 +1167,24 @@ button{font:inherit;color:inherit}
         <a class="btn btn-amber btn-sm" href="#contact"><span data-i18n="e4.cta">En parler</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </li>
     </ul>
+    <p class="swipe-hint" aria-hidden="true"><span data-i18n="swipe.hint">Faites glisser</span> →</p>
   </div>
 </section>
 
 <!-- ==========================================================================
-     06. Qualité & sécurité
-     ========================================================================== -->
-<section class="section" id="qualite" aria-labelledby="why-title">
-  <div class="container faq-grid">
-    <header class="faq-head">
-      <p class="kicker"><span class="kicker-num">06</span><span data-i18n="why.kicker">Qualité &amp; sécurité</span></p>
-      <h2 id="why-title" data-i18n="why.title">Pourquoi nous faire <em>confiance&nbsp;?</em></h2>
-      <p class="section-lead" data-i18n="why.lead">Huit engagements concrets, pour un partenariat qui dure — pas une prestation ponctuelle.</p>
-    </header>
-    <ul class="principles stagger">
-      <li class="reveal"><span class="pn">01</span><strong data-i18n="w1.t">Interlocuteur unique</strong><span class="d" data-i18n="w1.d">Une seule personne suit votre dossier, du premier appel à la livraison.</span></li>
-      <li class="reveal"><span class="pn">02</span><strong data-i18n="w2.t">Point hebdomadaire de 30&nbsp;min</strong><span class="d" data-i18n="w2.d">Chaque semaine, un point de 30&nbsp;minutes, suivi d’un rapport écrit.</span></li>
-      <li class="reveal"><span class="pn">03</span><strong data-i18n="w3.t">Double vérification</strong><span class="d" data-i18n="w3.d">Celui qui conçoit ne vérifie pas&nbsp;: chaque livrable est contrôlé par un second membre de l’équipe.</span></li>
-      <li class="reveal"><span class="pn">04</span><strong data-i18n="w4.t">Confidentialité et propriété</strong><span class="d" data-i18n="w4.d">NDA systématique, propriété intellectuelle cédée, fichiers sources livrés.</span></li>
-      <li class="reveal"><span class="pn">05</span><strong data-i18n="w5.t">Vos standards</strong><span class="d" data-i18n="w5.d">Vos cartouches, gabarits et nomenclatures, appliqués à chaque livrable.</span></li>
-      <li class="reveal"><span class="pn">06</span><strong data-i18n="w6.t">Deux fuseaux horaires</strong><span class="d" data-i18n="w6.d">Tunisie + Canada&nbsp;: le travail avance environ 15&nbsp;h par jour.</span></li>
-      <li class="reveal"><span class="pn">07</span><strong data-i18n="w8.t">Validation locale</strong><span class="d" data-i18n="w8.d">Si la réglementation de votre pays l’exige, les livrables sont validés par un professionnel habilité localement&nbsp;: le vôtre ou un partenaire.</span></li>
-      <li class="reveal"><span class="pn">08</span><strong data-i18n="w7.t">Correction gratuite</strong><span class="d" data-i18n="w7.d">Si l’erreur vient de nous, la correction est gratuite.</span></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ==========================================================================
-     07. Équipe (no names — expertise profiles)
+     06. Équipe (no names — expertise profiles)
      ========================================================================== -->
 <section class="section" id="equipe" aria-labelledby="team-title">
   <div class="container">
     <header class="section-head split">
       <div>
-        <p class="kicker"><span class="kicker-num">07</span><span data-i18n="team.kicker">Équipe</span></p>
+        <p class="kicker"><span class="kicker-num">06</span><span data-i18n="team.kicker">Équipe</span></p>
         <h2 id="team-title" data-i18n="team.title">Une équipe d’ingénierie, <em>quatre spécialités.</em></h2>
       </div>
       <p class="section-lead" data-i18n="team.lead">Des profils complémentaires, basés en Tunisie avec une représentation au Canada, mobilisés ensemble sur vos projets.</p>
     </header>
 
-    <div class="services-grid stagger">
+    <div class="services-grid stagger swipe" data-i18n-attr="aria-label:swipe.team" aria-label="Profils de l’équipe">
       <article class="card founder reveal" aria-labelledby="tm-1">
         <div class="founder-deco" aria-hidden="true"><svg viewBox="0 0 260 60" focusable="false"><path d="M0 30Q16.25-4 32.5 30T65 30T97.5 30T130 30Q146.25 10 162.5 30T195 30Q211.25 22 227.5 30T260 30" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
         <div class="avatar" aria-hidden="true"><svg viewBox="0 0 136 136" focusable="false"><circle cx="68" cy="68" r="64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="80 322" stroke-linecap="round" transform="rotate(-120 68 68)"/></svg>kW</div>
@@ -1197,6 +1230,7 @@ button{font:inherit;color:inherit}
         </ul>
       </article>
     </div>
+    <p class="swipe-hint" aria-hidden="true"><span data-i18n="swipe.hint">Faites glisser</span> →</p>
 
     <p class="refs-note reveal"><svg class="ico" aria-hidden="true"><use href="#i-lang"/></svg><span data-i18n="team.lang">Une équipe trilingue&nbsp;: français, anglais, arabe.</span></p>
     <p class="refs-note reveal"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="team.partner">Vous êtes technicien ou ingénieur et pouvez intervenir sur site pour nos clients&nbsp;? <a href="#contact" data-partner>Devenez partenaire terrain</a>.</span></p>
@@ -1205,13 +1239,13 @@ button{font:inherit;color:inherit}
 </section>
 
 <!-- ==========================================================================
-     08. Projets (dynamic portfolio — same template for every project)
+     07. Projets (dynamic portfolio — same template for every project)
      ========================================================================== -->
 <section class="section" id="projets" aria-labelledby="proj-title">
   <div class="container">
     <header class="section-head split">
       <div>
-        <p class="kicker"><span class="kicker-num">08</span><span data-i18n="pr.kicker">Projets</span></p>
+        <p class="kicker"><span class="kicker-num">07</span><span data-i18n="pr.kicker">Projets</span></p>
         <h2 id="proj-title" data-i18n="pr.title">Projets <em>&amp; expérience de l’équipe.</em></h2>
       </div>
       <p class="section-lead" data-i18n="pr.lead">Chaque fiche suit le même format&nbsp;: contexte, réalisation, résultats. Les fiches «&nbsp;Expérience antérieure&nbsp;» ont été réalisées par nos membres dans leurs postes précédents. Aucun nom de client n’est communiqué.</p>
@@ -1228,14 +1262,14 @@ button{font:inherit;color:inherit}
 </section>
 
 <!-- ==========================================================================
-     09. Marchés & secteurs
+     08. Marchés & secteurs
      ========================================================================== -->
 <section class="section section-purple on-dark" id="marches" aria-labelledby="markets-title">
   <div class="grid-bg" aria-hidden="true"></div>
   <div class="container">
     <header class="section-head split">
       <div>
-        <p class="kicker"><span class="kicker-num">09</span><span data-i18n="markets.kicker">Marchés &amp; secteurs</span></p>
+        <p class="kicker"><span class="kicker-num">08</span><span data-i18n="markets.kicker">Marchés &amp; secteurs</span></p>
         <h2 id="markets-title" data-i18n="markets.title">Une équipe d’ingénierie, quatre continents.</h2>
       </div>
       <p class="section-lead" data-i18n="markets.lead">Nous intervenons à distance en Europe, dans le Golfe, en Amérique du Nord, en Afrique et en Tunisie, dans votre langue et selon vos standards.</p>
@@ -1263,12 +1297,12 @@ button{font:inherit;color:inherit}
 </section>
 
 <!-- ==========================================================================
-     10. FAQ
+     09. FAQ
      ========================================================================== -->
 <section class="section faq" id="faq" aria-labelledby="faq-title">
   <div class="container faq-grid">
     <header class="faq-head">
-      <p class="kicker"><span class="kicker-num">10</span><span>FAQ</span></p>
+      <p class="kicker"><span class="kicker-num">09</span><span>FAQ</span></p>
       <h2 id="faq-title" data-i18n="faq.title">Questions <em>fréquentes.</em></h2>
       <p class="section-lead" data-i18n="faq.lead">Une autre question&nbsp;? <a href="#contact">Écrivez-nous</a>, en français, en anglais ou en arabe.</p>
     </header>
@@ -1280,7 +1314,7 @@ button{font:inherit;color:inherit}
       </div>
       <div class="acc-item">
         <h3 class="acc-h"><button class="acc-btn" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2"><span class="acc-q"><span class="n">02</span><span data-i18n="q2">Où êtes-vous basés&nbsp;?</span></span><span class="acc-icon" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M4 12h16"/><path class="v" d="M12 4v16"/></svg></span></button></h3>
-        <div class="acc-panel" id="faq-a2" role="region" aria-labelledby="faq-q2"><div class="acc-inner"><p data-i18n="a2">Notre équipe d’ingénierie est basée en Tunisie, avec une représentation au Canada. Nous travaillons pour des projets partout dans le monde, à distance.</p></div></div>
+        <div class="acc-panel" id="faq-a2" role="region" aria-labelledby="faq-q2"><div class="acc-inner"><p data-i18n="a2">Notre équipe d’ingénierie est basée en Tunisie, au même fuseau horaire que l’Europe de l’Ouest (±1&nbsp;h), avec une représentation au Canada. Nous travaillons à distance sur des projets partout dans le monde.</p></div></div>
       </div>
       <div class="acc-item">
         <h3 class="acc-h"><button class="acc-btn" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3"><span class="acc-q"><span class="n">03</span><span data-i18n="q3">Vos livrables sont-ils validés pour mon pays&nbsp;?</span></span><span class="acc-icon" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M4 12h16"/><path class="v" d="M12 4v16"/></svg></span></button></h3>
@@ -1296,11 +1330,11 @@ button{font:inherit;color:inherit}
       </div>
       <div class="acc-item">
         <h3 class="acc-h"><button class="acc-btn" type="button" id="faq-q6" aria-expanded="false" aria-controls="faq-a6"><span class="acc-q"><span class="n">06</span><span data-i18n="q6">Comment démarre-t-on&nbsp;?</span></span><span class="acc-icon" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M4 12h16"/><path class="v" d="M12 4v16"/></svg></span></button></h3>
-        <div class="acc-panel" id="faq-a6" role="region" aria-labelledby="faq-q6"><div class="acc-inner"><p data-i18n="a6">Par un appel découverte de 30&nbsp;minutes, puis un projet pilote&nbsp;: une pièce, un plan ou un schéma livré en 5&nbsp;jours, à prix fixe. Vous jugez la qualité sur pièce avant d’aller plus loin.</p></div></div>
+        <div class="acc-panel" id="faq-a6" role="region" aria-labelledby="faq-q6"><div class="acc-inner"><p data-i18n="a6">Par un appel découverte de 30&nbsp;minutes, puis un projet pilote&nbsp;: une pièce, un plan ou un schéma livré en 5&nbsp;jours, à prix fixe, à partir de 390&nbsp;€ HT. Vous jugez la qualité sur pièce avant d’aller plus loin.</p></div></div>
       </div>
       <div class="acc-item">
         <h3 class="acc-h"><button class="acc-btn" type="button" id="faq-q7" aria-expanded="false" aria-controls="faq-a7"><span class="acc-q"><span class="n">07</span><span data-i18n="q7">Comment fixez-vous les prix&nbsp;?</span></span><span class="acc-icon" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M4 12h16"/><path class="v" d="M12 4v16"/></svg></span></button></h3>
-        <div class="acc-panel" id="faq-a7" role="region" aria-labelledby="faq-q7"><div class="acc-inner"><p data-i18n="a7">Selon la formule choisie&nbsp;: forfait (périmètre, prix et délai fixes), banque d’heures ou abonnement mensuel pour une équipe dédiée. Vous recevez un devis sous 48&nbsp;h après l’appel découverte.</p></div></div>
+        <div class="acc-panel" id="faq-a7" role="region" aria-labelledby="faq-q7"><div class="acc-inner"><p data-i18n="a7">Le projet pilote démarre à 390&nbsp;€ HT. Ensuite, selon la formule choisie&nbsp;: forfait (périmètre, prix et délai fixes), banque d’heures ou abonnement mensuel pour une équipe dédiée. Vous recevez un devis sous 48&nbsp;h après l’appel découverte.</p></div></div>
       </div>
       <div class="acc-item">
         <h3 class="acc-h"><button class="acc-btn" type="button" id="faq-q8" aria-expanded="false" aria-controls="faq-a8"><span class="acc-q"><span class="n">08</span><span data-i18n="q8">Langues et fuseaux horaires&nbsp;?</span></span><span class="acc-icon" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M4 12h16"/><path class="v" d="M12 4v16"/></svg></span></button></h3>
@@ -1311,19 +1345,20 @@ button{font:inherit;color:inherit}
 </section>
 
 <!-- ==========================================================================
-     11. Contact
+     10. Contact
      ========================================================================== -->
 <section class="section section-dark contact on-dark" id="contact" aria-labelledby="contact-title">
   <div class="grid-bg" aria-hidden="true"></div>
   <div class="container contact-grid">
     <div class="contact-copy">
-      <p class="kicker"><span class="kicker-num">11</span><span data-i18n="contact.kicker">Contact</span></p>
+      <p class="kicker"><span class="kicker-num">10</span><span data-i18n="contact.kicker">Contact</span></p>
       <h2 id="contact-title" data-i18n="contact.title">Parlons de <em>votre projet.</em></h2>
       <p class="section-lead" data-i18n="contact.lead">Décrivez votre besoin en quelques lignes&nbsp;: nous revenons vers vous avec une proposition sous 48&nbsp;h.</p>
       <ul class="contact-list">
         <li><span class="ci"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></span><span class="cl" data-i18n="contact.email">Courriel</span><span class="cv"><a href="mailto:firas.jallouz@gmail.com" data-email>firas.jallouz@gmail.com</a></span></li>
         <li><span class="ci"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></span><span class="cl" data-i18n="contact.phone">Téléphone · Canada</span><span class="cv"><a href="tel:+14182616736" data-phone>+1 (418) 261-6736</a></span></li>
         <li data-phone-tn-row hidden><span class="ci"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></span><span class="cl" data-i18n="contact.phone.tn">Téléphone · Tunisie</span><span class="cv"><a href="#contact" data-phone-tn></a></span></li>
+        <li data-wa-row hidden><span class="ci"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span><span class="cl">WhatsApp</span><span class="cv"><a href="#contact" data-wa target="_blank" rel="noopener"></a></span></li>
         <li data-booking hidden><span class="ci"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg></span><span class="cl" data-i18n="contact.call">Appel découverte</span><span class="cv"><a href="#contact" data-i18n="cta.call">Réserver un appel</a></span></li>
         <li><span class="ci"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg></span><span class="cl" data-i18n="contact.loc">Basés en</span><span class="cv" data-i18n="contact.loc.v">Tunisie · représentation au Canada — projets partout dans le monde</span></li>
       </ul>
@@ -1341,8 +1376,17 @@ button{font:inherit;color:inherit}
           <p class="err" id="f-name-err" aria-live="polite"></p>
         </div>
         <div class="field">
+          <label for="f-email"><span data-i18n="form.email">Courriel professionnel</span> <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-required="true" aria-describedby="f-email-err">
+          <p class="err" id="f-email-err" aria-live="polite"></p>
+        </div>
+        <div class="field">
           <label for="f-company"><span data-i18n="form.company">Entreprise</span> <span class="opt" data-i18n="form.optional">(facultatif)</span></label>
           <input id="f-company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="f-phone"><span data-i18n="form.phone">Téléphone</span> <span class="opt" data-i18n="form.optional">(facultatif)</span></label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
         </div>
         <div class="field">
           <label for="f-country"><span data-i18n="form.country">Pays</span> <span class="opt" data-i18n="form.optional">(facultatif)</span></label>
@@ -1367,8 +1411,9 @@ button{font:inherit;color:inherit}
           <p class="err" id="f-message-err" aria-live="polite"></p>
         </div>
       </div>
+      <div class="hp" aria-hidden="true"><label for="f-website">Site web</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
       <div class="form-foot">
-        <p class="form-note" data-i18n="form.note">L’envoi ouvre votre messagerie avec un courriel pré-rempli. Aucune donnée n’est stockée sur ce site.</p>
+        <p class="form-note" data-i18n="form.note">Réponse sous 48&nbsp;h. Vos informations servent uniquement à vous répondre (<a href="confidentialite.html">confidentialité</a>).</p>
         <button class="btn btn-amber" type="submit"><span data-i18n="form.submit">Envoyer la demande</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       </div>
       <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
@@ -1393,14 +1438,14 @@ button{font:inherit;color:inherit}
         <text class="w1" x="49" y="21.5" textLength="99" lengthAdjust="spacing">TYRIAN</text>
         <text class="w2" x="49.5" y="34" textLength="98" lengthAdjust="spacing">ENERGY</text>
       </svg>
-      <p class="footer-tag" data-i18n="footer.tag">Mesurer. Comprendre. Économiser.</p>
+      <p class="footer-tag" data-i18n="footer.tag">Concevoir. Piloter. Optimiser.</p>
       <p class="footer-desc" data-i18n="footer.desc">Ingénierie pluridisciplinaire à distance&nbsp;: gestion de projet, électricité, mécanique, énergie &amp; carbone.</p>
     </div>
     <nav class="footer-col" data-i18n-attr="aria-label:footer.nav.aria" aria-label="Pied de page">
       <h2 data-i18n="footer.nav">Navigation</h2>
       <ul>
+        <li><a href="#confiance" data-i18n="nav.why">Pourquoi nous</a></li>
         <li><a href="#expertises" data-i18n="nav.expertise">Expertises</a></li>
-        <li><a href="#cycle" data-i18n="nav.cycle">Cycle de projet</a></li>
         <li><a href="#distance" data-i18n="nav.remote">À distance</a></li>
         <li><a href="#formules" data-i18n="nav.models">Formules</a></li>
         <li><a href="#equipe" data-i18n="nav.team">Équipe</a></li>
@@ -1428,9 +1473,24 @@ button{font:inherit;color:inherit}
   <div class="container footer-bottom">
     <p data-i18n="footer.copy">© 2026 Tyrian Energy · Tunisie · Canada</p>
     <p data-i18n="footer.tm">CEM® est une marque déposée de l’AEE.</p>
-    <p><a href="#top" data-i18n="footer.top">Haut de page ↑</a></p>
+    <p class="footer-legal"><a href="mentions-legales.html" data-i18n="footer.legal">Mentions légales</a> · <a href="confidentialite.html" data-i18n="footer.privacy">Confidentialité</a><span data-consent-open-wrap hidden> · <a href="#" data-consent-open data-i18n="footer.cookies">Cookies</a></span> · <a href="#top" data-i18n="footer.top">Haut de page ↑</a></p>
   </div>
 </footer>
+
+<!-- Sticky call-to-action (phones) -->
+<div class="mobile-cta on-dark" id="mobile-cta">
+  <p><strong data-i18n="mcta.t">Projet pilote</strong><span data-i18n="mcta.s">5 jours · dès 390&nbsp;€ HT</span></p>
+  <a class="btn btn-amber btn-sm" href="#contact" data-i18n="mcta.cta">Démarrer</a>
+</div>
+
+<!-- Cookie consent (only shown when LINKEDIN_PARTNER_ID is set) -->
+<div class="consent on-dark" id="consent" role="dialog" aria-labelledby="consent-t" hidden>
+  <p id="consent-t" data-i18n="consent.text">Nous utilisons un cookie de mesure LinkedIn pour évaluer nos campagnes. <a href="confidentialite.html">En savoir plus</a></p>
+  <div class="consent-actions">
+    <button class="btn btn-ghost btn-sm" type="button" data-consent="no" data-i18n="consent.no">Refuser</button>
+    <button class="btn btn-amber btn-sm" type="button" data-consent="yes" data-i18n="consent.yes">Accepter</button>
+  </div>
+</div>
 
 <script>
 (function () {
@@ -1444,7 +1504,10 @@ button{font:inherit;color:inherit}
   var PHONE = '+1 (418) 261-6736';                 // Canada
   var PHONE_TN = '';                               // Tunisia, e.g. '+216 xx xxx xxx'. Empty = hidden.
   var BOOKING_URL = '';                            // e.g. a Calendly link. Empty = every "Réserver un appel" button is hidden.
-  var PROJECTS_API = '';                           // Google Apps Script web-app URL (see apps-script/Code.gs). Empty = projects section hidden.
+  var API_URL = '';                                // Google Apps Script web-app URL (apps-script/Code.gs): saves quote requests + loads projects.
+                                                   // Empty = the quote form falls back to the visitor's email app, and the projects section stays hidden.
+  var WHATSAPP = '';                               // e.g. '216xxxxxxxx' (digits, country code first). Empty = hidden.
+  var LINKEDIN_PARTNER_ID = '';                    // LinkedIn Insight Tag partner ID (digits). Empty = no tracking, no cookie banner.
 
   var STORAGE_KEY = 'tyrian-lang';
   var PROJECTS_CACHE_KEY = 'tyrian-projects';
@@ -1465,10 +1528,8 @@ button{font:inherit;color:inherit}
     'brand.aria': 'Tyrian Energy — back to top',
     'nav.aria': 'Main navigation',
     'nav.expertise': 'Expertise',
-    'nav.cycle': 'Project lifecycle',
     'nav.remote': 'Remote',
     'nav.models': 'Engagement',
-    'nav.quality': 'Quality',
     'nav.team': 'Team',
     'nav.projects': 'Projects',
     'nav.faq': 'FAQ',
@@ -1483,9 +1544,9 @@ button{font:inherit;color:inherit}
     'hero.title': 'Your engineering team, <em>without hiring.</em>',
     'hero.sub': 'Project management, electrical, mechanical and energy. A multidisciplinary engineering team based in Tunisia, working 100% remotely on your projects anywhere in the world.',
     'hero.tagline.aria': 'Our motto',
-    'tag.1': 'Measure.',
-    'tag.2': 'Understand.',
-    'tag.3': 'Save.',
+    'tag.1': 'Design.',
+    'tag.2': 'Manage.',
+    'tag.3': 'Optimise.',
     'hero.panel.aria': 'Illustration: 24-hour load profile before and after energy-efficiency measures, with power quality indicators.',
     'hero.panel.title': 'Load profile · 24 h',
     'hero.legend.base': 'Baseline',
@@ -1501,7 +1562,7 @@ button{font:inherit;color:inherit}
     'trust.aria': 'Certification, team and coverage',
     'trust.cem': 'Certified Energy Manager on the team',
     'trust.team.t': 'Multidisciplinary engineering',
-    'trust.team': 'Team based in Tunisia',
+    'trust.team': 'Team in Tunisia, same time zone as Europe',
     'trust.reg.t': '100% remote',
     'trust.reg': 'Europe · Gulf · North America · Africa',
     'trust.lang': 'A trilingual team',
@@ -1533,7 +1594,7 @@ button{font:inherit;color:inherit}
     /* 02 Expertise */
     'ex.kicker': 'Expertise',
     'ex.title': 'Four disciplines, <em>one point of contact.</em>',
-    'ex.lead': 'Project management, electrical, mechanical and energy, plus data and white-label support. For each one: the problem we solve, the deliverables and the formats. Quote within 48 hours.',
+    'ex.lead': 'From feasibility to operation, on a single discipline or combining several. For each one: the problem we solve, the deliverables and the formats. Quote within 48 hours.',
     'deliv': 'Deliverables',
     'formats': 'Formats delivered',
     'tool': 'Tool',
@@ -1572,40 +1633,6 @@ button{font:inherit;color:inherit}
     'd6.d3': 'Deliverables in your title blocks and templates',
     'd6.formats': 'Your formats and templates',
 
-    /* 03 Lifecycle */
-    'cy.kicker': 'Project lifecycle',
-    'cy.title': 'From feasibility <em>to operation.</em>',
-    'cy.lead': 'We step in at every phase of your project, on a single discipline or combining several.',
-    'cy.p1': 'Phase 01',
-    'cy.p2': 'Phase 02',
-    'cy.p3': 'Phase 03',
-    'cy.p4': 'Phase 04',
-    'cy.disc': 'Expertise',
-    'cy1.t': 'Feasibility',
-    'cy1.v': 'Validate a project before investing.',
-    'cy1.d1': 'Energy audits and techno-economic studies',
-    'cy1.d2': 'Solar PV pre-feasibility',
-    'cy1.d3': 'Preliminary project schedule',
-    'cy1.e': 'Energy · Project management',
-    'cy2.t': 'Design',
-    'cy2.v': 'Design and document.',
-    'cy2.d1': '3D models and drawings',
-    'cy2.d2': 'Single-line and control diagrams',
-    'cy2.d3': 'Bills of materials',
-    'cy2.e': 'Mechanical · Electrical',
-    'cy3.t': 'Delivery',
-    'cy3.v': 'Steer the execution.',
-    'cy3.d1': 'Project management and supplier follow-up',
-    'cy3.d2': 'Weekly report and risk management',
-    'cy3.d3': 'As-built drawings',
-    'cy3.e': 'Project management · Electrical',
-    'cy4.t': 'Operation',
-    'cy4.v': 'Measure and improve over time.',
-    'cy4.d1': 'Metering, M&amp;V (IPMVP) and dashboards',
-    'cy4.d2': 'ISO&nbsp;50001 management system',
-    'cy4.d3': 'GHG inventory and CBAM data',
-    'cy4.e': 'Energy · Data',
-
     /* 04 Remote */
     'rm.kicker': '100% remote',
     'rm.title': 'Your engineering centre, <em>no travel needed.</em>',
@@ -1639,8 +1666,7 @@ button{font:inherit;color:inherit}
     'best': 'Best for',
     'e1.tag': '5 days · Fixed price',
     'e1.title': 'Pilot project',
-    'e1.value': 'One part, drawing or schematic delivered in 5&nbsp;days, at a fixed price.',
-    'e1.best': 'testing us risk-free',
+    'e1.value': 'One part, drawing or schematic delivered in 5&nbsp;days, at a fixed price. The risk-free way to test us.',
     'e2.tag': 'Fixed scope',
     'e2.title': 'Fixed-scope assignment',
     'e2.value': 'Scope, price and deadline fixed upfront, in writing.',
@@ -1653,27 +1679,6 @@ button{font:inherit;color:inherit}
     'e4.title': 'Dedicated engineering team',
     'e4.value': 'A dedicated team every month that knows your products, your standards and your priorities.',
     'e4.cta': 'Let’s talk',
-
-    /* 06 Quality */
-    'why.kicker': 'Quality &amp; security',
-    'why.title': 'Why <em>trust us?</em>',
-    'why.lead': 'Eight concrete commitments, for a long-term partnership — not a one-off job.',
-    'w1.t': 'Single point of contact',
-    'w1.d': 'One person follows your file, from the first call to delivery.',
-    'w2.t': 'Weekly 30-minute check-in',
-    'w2.d': 'Every week, a 30-minute call followed by a written report.',
-    'w3.t': 'Two-person check',
-    'w3.d': 'Whoever designs does not check: every deliverable is reviewed by a second team member.',
-    'w4.t': 'Confidentiality and ownership',
-    'w4.d': 'NDA as standard, intellectual property transferred to you, source files delivered.',
-    'w5.t': 'Your standards',
-    'w5.d': 'Your title blocks, templates and bills of materials, applied to every deliverable.',
-    'w6.t': 'Two time zones',
-    'w6.d': 'Tunisia + Canada: work moves forward about 15 hours a day.',
-    'w7.t': 'Free corrections',
-    'w7.d': 'If the error is ours, the fix is free.',
-    'w8.t': 'Local approval',
-    'w8.d': 'If your country’s regulations require it, deliverables are approved by a locally licensed professional: yours or a partner.',
 
     /* 07 Team */
     'team.kicker': 'Team',
@@ -1734,7 +1739,7 @@ button{font:inherit;color:inherit}
     'q1': 'Do you really work 100% remotely?',
     'a1': 'Yes. Drawings, schematics, dashboards and reports are produced and delivered remotely. When an on-site measurement is needed, your site electrician carries it out, guided by us over video. In Tunisia our team can come on site; elsewhere we rely on partners.',
     'q2': 'Where are you based?',
-    'a2': 'Our engineering team is based in Tunisia, with a presence in Canada. We work remotely on projects all over the world.',
+    'a2': 'Our engineering team is based in Tunisia, in the same time zone as Western Europe (±1 h), with a presence in Canada. We work remotely on projects all over the world.',
     'q3': 'Are your deliverables approved for my country?',
     'a3': 'We carry out the studies and produce the deliverables. When the regulations of the project’s country require a local stamp or signature, approval is given by a professional licensed in that country: yours or a partner.',
     'q4': 'How do you protect our data and drawings?',
@@ -1742,9 +1747,9 @@ button{font:inherit;color:inherit}
     'q5': 'Which software and formats do you use?',
     'a5': 'Mechanical work in SolidWorks, delivered as SLDPRT/SLDASM, STEP, DWG and PDF. Electrical work in <span class="ph">[LOGICIEL À CONFIRMER]</span>, delivered as DWG and PDF. Dashboards in <span class="ph">[OUTIL À CONFIRMER, ex. Power BI]</span>. We can also work in your own formats and templates.',
     'q6': 'How do we get started?',
-    'a6': 'With a 30-minute discovery call, then a pilot project: one part, drawing or schematic delivered in 5 days at a fixed price. You judge the quality first-hand before going further.',
+    'a6': 'With a 30-minute discovery call, then a pilot project: one part, drawing or schematic delivered in 5 days at a fixed price, from €390 excl. VAT. You judge the quality first-hand before going further.',
     'q7': 'How do you set prices?',
-    'a7': 'It depends on the model: fixed scope (fixed scope, price and deadline), block of hours, or a monthly subscription for a dedicated team. You receive a quote within 48 hours of the discovery call.',
+    'a7': 'The pilot project starts at €390 excl. VAT. After that, it depends on the model: fixed scope (fixed scope, price and deadline), block of hours, or a monthly subscription for a dedicated team. You receive a quote within 48 hours of the discovery call.',
     'q8': 'Languages and time zones?',
     'a8': 'We work in French, English and Arabic. The team is split between Tunisia and Canada, so work moves forward about 15 hours a day, and the weekly check-in is scheduled at a time that suits you.',
 
@@ -1775,11 +1780,72 @@ button{font:inherit;color:inherit}
     'opt.n7': 'Other',
     'form.message': 'Message',
     'form.message.ph': 'Your need, volume, expected formats, deadline…',
-    'form.note': 'Submitting opens your email app with a pre-filled message. No data is stored on this site.',
+    'form.note': 'Reply within 48 hours. Your details are only used to answer you (<a href="confidentialite.html#en">privacy</a>).',
     'form.submit': 'Send request',
 
+    /* Audit additions */
+    'nav.why': 'Why us',
+    'why.kicker': 'Why us',
+    'why.title': 'Not a freelancer. <em>Not a new hire.</em>',
+    'why.lead': 'The flexibility of a contractor, the reliability of a team. Compare before you choose.',
+    'cmp.caption': 'Comparison: freelancer, hiring and Tyrian Energy',
+    'cmp.h0': 'Criterion',
+    'cmp.h1': 'Freelancer',
+    'cmp.h2': 'Hiring',
+    'cmp.r1': 'Start',
+    'cmp.r1a': 'Varies',
+    'cmp.r1b': 'Several months',
+    'cmp.r1c': 'Within days',
+    'cmp.r2': 'Continuity',
+    'cmp.r2a': 'One person',
+    'cmp.r2b': 'Depends on one employee',
+    'cmp.r2c': 'Team of 4: cover during absences',
+    'cmp.r3': 'Quality check',
+    'cmp.r3a': 'Self-checked',
+    'cmp.r3b': 'Depends on your organisation',
+    'cmp.r3c': 'Every deliverable checked twice',
+    'cmp.r4': 'Confidentiality &amp; ownership',
+    'cmp.r4a': 'To be negotiated',
+    'cmp.r4b': 'Employment contract',
+    'cmp.r4c': 'NDA, IP transferred, source files delivered',
+    'cmp.r5': 'Your standards',
+    'cmp.r5a': 'Varies',
+    'cmp.r5b': 'Needs training',
+    'cmp.r5c': 'Applied from the pilot',
+    'cmp.r6': 'Disciplines',
+    'cmp.r6a': 'One specialty',
+    'cmp.r6b': 'One profile',
+    'cmp.r6c': '4 disciplines, one point of contact',
+    'cmp.r7': 'Cost',
+    'cmp.r7a': 'Often time-based',
+    'cmp.r7b': 'Annual salary and overheads',
+    'cmp.r7c': 'Fixed price per assignment',
+    'cmp.r8': 'Errors',
+    'cmp.r8a': 'Depends on the contract',
+    'cmp.r8b': 'Your cost',
+    'cmp.r8c': 'Free fix if the error is ours',
+    'pilot.note': '5 days · from €390 excl. VAT · no commitment',
+    'price.from': 'From',
+    'e1.price': '€390 excl. VAT',
+    'form.email': 'Work email',
+    'form.phone': 'Phone',
+    'mcta.t': 'Pilot project',
+    'mcta.s': '5 days · from €390',
+    'mcta.cta': 'Start',
+    'consent.text': 'We use a LinkedIn measurement cookie to evaluate our campaigns. <a href="confidentialite.html#en">Learn more</a>',
+    'consent.no': 'Decline',
+    'consent.yes': 'Accept',
+    'swipe.hint': 'Swipe',
+    'swipe.pain': 'Common situations',
+    'swipe.ex': 'Our expertise',
+    'swipe.models': 'Engagement models',
+    'swipe.team': 'Team profiles',
+    'footer.legal': 'Legal notice',
+    'footer.privacy': 'Privacy',
+    'footer.cookies': 'Cookies',
+
     /* Footer */
-    'footer.tag': 'Measure. Understand. Save.',
+    'footer.tag': 'Design. Manage. Optimise.',
     'footer.desc': 'Remote multidisciplinary engineering: project management, electrical, mechanical, energy &amp; carbon.',
     'footer.nav.aria': 'Footer',
     'footer.nav': 'Navigation',
@@ -1797,14 +1863,18 @@ button{font:inherit;color:inherit}
       menuOpen: 'Ouvrir le menu', menuClose: 'Fermer le menu',
       errName: 'Indiquez votre nom.', errMessage: 'Décrivez brièvement votre besoin.',
       subject: 'Demande de projet', none: 'Non précisé', partnerSubject: 'Partenaire terrain',
-      lName: 'Nom', lCompany: 'Entreprise', lCountry: 'Pays', lService: 'Type de besoin', lMessage: 'Message', sep: ' : ',
+      errEmail: 'Indiquez un courriel valide.', sending: 'Envoi en cours…',
+      thanks: 'Merci&nbsp;! Votre demande est bien reçue. Nous revenons vers vous sous 48&nbsp;h.',
+      lName: 'Nom', lEmail: 'Courriel', lPhone: 'Téléphone', lCompany: 'Entreprise', lCountry: 'Pays', lService: 'Type de besoin', lMessage: 'Message', sep: ' : ',
       sent: 'Votre messagerie s’ouvre avec la demande pré-remplie. Si rien ne se passe, écrivez-nous à <a href="mailto:{email}">{email}</a>.'
     },
     en: {
       menuOpen: 'Open menu', menuClose: 'Close menu',
       errName: 'Please enter your name.', errMessage: 'Please briefly describe your needs.',
       subject: 'Project request', none: 'Not specified', partnerSubject: 'Field partner',
-      lName: 'Name', lCompany: 'Company', lCountry: 'Country', lService: 'Type of need', lMessage: 'Message', sep: ': ',
+      errEmail: 'Please enter a valid email address.', sending: 'Sending…',
+      thanks: 'Thank you! Your request has been received. We’ll get back to you within 48 hours.',
+      lName: 'Name', lEmail: 'Email', lPhone: 'Phone', lCompany: 'Company', lCountry: 'Country', lService: 'Type of need', lMessage: 'Message', sep: ': ',
       sent: 'Your email app is opening with the pre-filled request. If nothing happens, write to us at <a href="mailto:{email}">{email}</a>.'
     }
   };
@@ -1864,6 +1934,9 @@ button{font:inherit;color:inherit}
     var hasTn = /\d{6,}/.test(PHONE_TN.replace(/\D/g, ''));
     $$('[data-phone-tn-row]').forEach(function (row) { row.hidden = !hasTn; });
     $$('[data-phone-tn]').forEach(function (a) { if (hasTn) { a.setAttribute('href', telHref(PHONE_TN)); a.textContent = PHONE_TN; } });
+    var wa = String(WHATSAPP).replace(/\D/g, '');
+    $$('[data-wa-row]').forEach(function (row) { row.hidden = wa.length < 8; });
+    $$('[data-wa]').forEach(function (a) { if (wa.length >= 8) { a.setAttribute('href', 'https://wa.me/' + wa); a.textContent = '+' + wa; } });
     $$('[data-partner]').forEach(function (a) { a.setAttribute('href', 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent('Tyrian Energy — ' + msg('partnerSubject'))); });
     var hasBooking = /^https?:\/\//i.test(BOOKING_URL);
     $$('[data-booking]').forEach(function (el) {
@@ -2000,7 +2073,7 @@ button{font:inherit;color:inherit}
 
 
   /* ------------------------------------------------------------------
-     Projects portfolio — loaded from PROJECTS_API (Google Sheet).
+     Projects portfolio — loaded from API_URL (Google Sheet).
      The section and its menu links stay hidden until at least one
      published project exists.
      ------------------------------------------------------------------ */
@@ -2067,9 +2140,9 @@ button{font:inherit;color:inherit}
     renderProjects(false);
   }
   (function loadProjects() {
-    if (!/^https:\/\//i.test(PROJECTS_API) || !window.fetch) return;
+    if (!/^https:\/\//i.test(API_URL) || !window.fetch) return;
     try { var cached = JSON.parse(storeGet(PROJECTS_CACHE_KEY) || 'null'); if (cached) useProjects(cached); } catch (e) { /* ignore cache */ }
-    window.fetch(PROJECTS_API, { method: 'GET', redirect: 'follow' })
+    window.fetch(API_URL, { method: 'GET', redirect: 'follow' })
       .then(function (r) { return r.json(); })
       .then(function (data) {
         if (!data || !Array.isArray(data.projects)) return;
@@ -2146,6 +2219,9 @@ button{font:inherit;color:inherit}
   /* ------------------------------------------------------------------
      FAQ accordion
      ------------------------------------------------------------------ */
+  if (window.matchMedia && window.matchMedia('(max-width: 639px)').matches) {   // phones: start with every answer closed
+    $$('.acc-item.open').forEach(function (it) { it.classList.remove('open'); $('.acc-btn', it).setAttribute('aria-expanded', 'false'); });
+  }
   $$('.acc-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var open = btn.getAttribute('aria-expanded') !== 'true';
@@ -2155,48 +2231,144 @@ button{font:inherit;color:inherit}
   });
 
   /* ------------------------------------------------------------------
-     Quote form → pre-filled mailto:
+     Quote form → API_URL (Google Sheet + email to you).
+     Falls back to a pre-filled email if API_URL is empty or unreachable.
      ------------------------------------------------------------------ */
   var form = $('#quote-form');
   var status = $('#form-status');
+  var submitBtn = form.querySelector('button[type="submit"]');
+  var formStart = Date.now();
   function fieldError(input, key) {
     var err = document.getElementById(input.id + '-err');
     if (key) { input.setAttribute('aria-invalid', 'true'); err.setAttribute('data-msg', key); err.textContent = msg(key); }
     else { input.removeAttribute('aria-invalid'); err.removeAttribute('data-msg'); err.textContent = ''; }
   }
-  ['name', 'message'].forEach(function (n) {
-    form.elements[n].addEventListener('input', function () { if (this.value.trim()) fieldError(this, null); });
+  function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+  var CHECKS = [['name', 'errName', function (v) { return !!v; }], ['email', 'errEmail', validEmail], ['message', 'errMessage', function (v) { return !!v; }]];
+  CHECKS.forEach(function (c) {
+    form.elements[c[0]].addEventListener('input', function () { if (c[2](this.value.trim())) fieldError(this, null); });
   });
+  function showStatus(key) { status.setAttribute('data-msg', key); status.innerHTML = msg(key); }
+  function mailtoFallback(lead) {
+    var m = MSG[lang];
+    var subject = m.subject + (lead.service_label ? ' — ' + lead.service_label : '') + ' — ' + (lead.company || lead.name);
+    var body = [
+      m.lName + m.sep + lead.name,
+      m.lEmail + m.sep + lead.email,
+      m.lPhone + m.sep + (lead.phone || m.none),
+      m.lCompany + m.sep + (lead.company || m.none),
+      m.lCountry + m.sep + (lead.country || m.none),
+      m.lService + m.sep + (lead.service_label || m.none),
+      '',
+      m.lMessage + m.sep,
+      lead.message
+    ].join('\r\n');
+    showStatus('sent');
+    window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var f = form.elements;
     var bad = null;
-    [['name', 'errName'], ['message', 'errMessage']].forEach(function (r) {
-      var input = f[r[0]];
-      if (!input.value.trim()) { fieldError(input, r[1]); bad = bad || input; } else { fieldError(input, null); }
+    CHECKS.forEach(function (c) {
+      var input = f[c[0]];
+      if (!c[2](input.value.trim())) { fieldError(input, c[1]); bad = bad || input; } else { fieldError(input, null); }
     });
     if (bad) { status.removeAttribute('data-msg'); status.textContent = ''; bad.focus(); return; }
 
-    var m = MSG[lang];
-    var name = f.name.value.trim();
-    var company = f.company.value.trim();
-    var country = f.country.value.trim();
-    var service = f.service.value ? f.service.options[f.service.selectedIndex].text : '';
-    var subject = m.subject + (service ? ' — ' + service : '') + ' — ' + (company || name);
-    var body = [
-      m.lName + m.sep + name,
-      m.lCompany + m.sep + (company || m.none),
-      m.lCountry + m.sep + (country || m.none),
-      m.lService + m.sep + (service || m.none),
-      '',
-      m.lMessage + m.sep,
-      f.message.value.trim()
-    ].join('\r\n');
-    var href = 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    status.setAttribute('data-msg', 'sent');
-    status.innerHTML = msg('sent');
-    window.location.href = href;
+    var lead = {
+      name: f.name.value.trim(), email: f.email.value.trim(), phone: f.phone.value.trim(),
+      company: f.company.value.trim(), country: f.country.value.trim(),
+      service: f.service.value, service_label: f.service.value ? f.service.options[f.service.selectedIndex].text : '',
+      message: f.message.value.trim(), lang: lang, page: window.location.href.split('#')[0]
+    };
+    if (f.website.value) { showStatus('thanks'); form.reset(); return; }   // honeypot: silently drop bots
+    if (!/^https:\/\//i.test(API_URL) || !window.fetch) { mailtoFallback(lead); return; }
+
+    submitBtn.disabled = true;
+    status.removeAttribute('data-msg');
+    status.textContent = msg('sending');
+    window.fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action: 'lead', t: Date.now() - formStart, lead: lead })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (res) { if (res && res.ok) { showStatus('thanks'); form.reset(); } else { mailtoFallback(lead); } })
+      .catch(function () { mailtoFallback(lead); })
+      .then(function () { submitBtn.disabled = false; });
   });
+
+  /* Swipe rows (phones): keyboard-focusable only when they scroll */
+  function syncSwipe() {
+    $$('.swipe').forEach(function (el) {
+      if (el.scrollWidth > el.clientWidth + 4) el.setAttribute('tabindex', '0'); else el.removeAttribute('tabindex');
+    });
+  }
+  window.addEventListener('resize', syncSwipe, { passive: true });
+  syncSwipe();
+
+  /* ------------------------------------------------------------------
+     Sticky call-to-action on phones: shown once the hero button has
+     scrolled away, hidden over the contact section and the footer.
+     ------------------------------------------------------------------ */
+  var updateMobileCta = function () {};
+  (function stickyCta() {
+    var bar = $('#mobile-cta');
+    var heroCta = $('.hero-ctas');
+    if (!bar || !heroCta || !('IntersectionObserver' in window)) return;
+    var heroVisible = true;
+    var blockers = {};
+    var consentBox = $('#consent');
+    updateMobileCta = function () {
+      var blocked = Object.keys(blockers).some(function (k) { return blockers[k]; });
+      bar.classList.toggle('show', !heroVisible && !blocked && (!consentBox || consentBox.hidden));
+    };
+    new IntersectionObserver(function (en) { heroVisible = en[0].isIntersecting; updateMobileCta(); }).observe(heroCta);
+    var bio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { blockers[en.target.getAttribute('data-block')] = en.isIntersecting; });
+      updateMobileCta();
+    });
+    [['contact', $('#contact')], ['footer', $('.site-footer')]].forEach(function (b) {
+      if (b[1]) { b[1].setAttribute('data-block', b[0]); bio.observe(b[1]); }
+    });
+  })();
+
+  /* ------------------------------------------------------------------
+     Cookie consent + LinkedIn Insight Tag (only if LINKEDIN_PARTNER_ID)
+     ------------------------------------------------------------------ */
+  (function consent() {
+    if (!/^\d+$/.test(LINKEDIN_PARTNER_ID)) return;
+    var KEY = 'tyrian-consent';
+    var box = $('#consent');
+    var wrap = $('[data-consent-open-wrap]');
+    function loadLinkedIn() {
+      if (window._linkedin_partner_id) return;
+      window._linkedin_partner_id = LINKEDIN_PARTNER_ID;
+      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+      window._linkedin_data_partner_ids.push(LINKEDIN_PARTNER_ID);
+      if (!window.lintrk) { window.lintrk = function (a, b) { window.lintrk.q.push([a, b]); }; window.lintrk.q = []; }
+      var sc = document.createElement('script');
+      sc.async = true;
+      sc.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
+      document.head.appendChild(sc);
+    }
+    if (wrap) wrap.hidden = false;
+    var choice = storeGet(KEY);
+    if (choice === 'yes') loadLinkedIn();
+    else if (choice !== 'no') box.hidden = false;
+    $$('[data-consent]', box).forEach(function (b) {
+      b.addEventListener('click', function () {
+        var yes = b.getAttribute('data-consent') === 'yes';
+        storeSet(KEY, yes ? 'yes' : 'no');
+        box.hidden = true;
+        if (yes) loadLinkedIn();
+        updateMobileCta();
+      });
+    });
+    var reopen = $('[data-consent-open]');
+    if (reopen) reopen.addEventListener('click', function (e) { e.preventDefault(); box.hidden = false; updateMobileCta(); });
+  })();
 
   /* ------------------------------------------------------------------
      Hero load-curve cursor (pauses off-screen; static with reduced motion)

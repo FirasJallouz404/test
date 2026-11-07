@@ -752,8 +752,8 @@ button{font:inherit;color:inherit}
 (function () {
   'use strict';
 
-  /* Same value as PROJECTS_API in index.html (Google Apps Script web-app URL). */
-  var PROJECTS_API = '';
+  /* Same value as API_URL in index.html (Google Apps Script web-app URL). */
+  var API_URL = '';
 
   /* ------------------------------------------------------------------
      PROJECT TEMPLATE — identical in index.html and ajouter-projet.html.
@@ -934,13 +934,13 @@ button{font:inherit;color:inherit}
     var confirmed = form.elements.confirm.checked;
     if (missing.length || !key) { say('Complétez les champs obligatoires (*).', true); (form.querySelector('[aria-invalid="true"]') || form).focus(); return; }
     if (!confirmed) { say('Cochez la confirmation de confidentialité.', true); form.elements.confirm.focus(); return; }
-    if (!/^https:\/\//i.test(PROJECTS_API)) { say('PROJECTS_API n’est pas configurée dans ajouter-projet.html : le projet ne peut pas être enregistré.', true); return; }
+    if (!/^https:\/\//i.test(API_URL)) { say('API_URL n’est pas configurée dans ajouter-projet.html : le projet ne peut pas être enregistré.', true); return; }
     if (p.year && !/^\d{4}$/.test(p.year)) { say('Année : 4 chiffres (ex. 2024).', true); form.elements.year.focus(); return; }
 
     try { window.sessionStorage.setItem('tyrian-team-key', key); } catch (e2) { /* ignore */ }
     submit.disabled = true;
     say('Enregistrement…');
-    window.fetch(PROJECTS_API, {
+    window.fetch(API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({ key: key, confirm: true, project: p })
@@ -959,7 +959,7 @@ button{font:inherit;color:inherit}
           say('Enregistrement impossible (' + ((res && res.error) || 'erreur') + '). Réessayez.', true);
         }
       })
-      .catch(function () { say('Connexion impossible avec la Google Sheet. Vérifiez PROJECTS_API.', true); })
+      .catch(function () { say('Connexion impossible avec la Google Sheet. Vérifiez API_URL.', true); })
       .then(function () { submit.disabled = false; });
   });
 })();
