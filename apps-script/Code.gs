@@ -1,8 +1,8 @@
 /**
- * Tyrian Energy — Projects API (Google Apps Script + Google Sheet). Free.
+ * Tyrian Partners — Projects API (Google Apps Script + Google Sheet). Free.
  *
  * SETUP (about 10 minutes)
- *  1. Create a Google Sheet, e.g. "Tyrian Energy — Projets".
+ *  1. Create a Google Sheet, e.g. "Tyrian Partners — Projets".
  *  2. In the sheet: Extensions → Apps Script. Replace the code with this file. Save.
  *  3. Project Settings (gear icon) → Script properties → Add:
  *       TEAM_KEY = a long passphrase you share with the team (used in ajouter-projet.html).
