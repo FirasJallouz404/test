@@ -1,0 +1,6 @@
+# Read by search engines only when this file sits at the root of the domain
+# (it will once the site is on its own domain; update the address below then).
+User-agent: *
+Allow: /
+
+Sitemap: https://firasjallouz404.github.io/test/sitemap.xml

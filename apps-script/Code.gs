@@ -9,6 +9,8 @@
  *  3. Project Settings (gear icon) → Script properties → Add:
  *       TEAM_KEY     = a long passphrase you share with the team (used in ajouter-projet.html).
  *       NOTIFY_EMAIL = the address that receives each quote request (e.g. contact@yourdomain).
+ *       BOOKING_URL  = (optional) your booking link; it is added to the confirmation email sent to visitors.
+ *       AUTO_REPLY   = (optional) set to "non" to stop sending that confirmation email.
  *  4. Select the function "setup" → Run → authorise (Sheets + Gmail sending).
  *     It creates the "Projets" and "Demandes" tabs with their columns.
  *  5. Deploy → New deployment → type "Web app".
@@ -21,6 +23,9 @@
  *    apps-script/projets-import.csv → "Replace current sheet". Its first row is the column header.
  *  - Hide a project: set its "published" cell to "non". Edit a project: change its cells.
  *  - Quote requests: one row per request in "Demandes" + an email to NOTIFY_EMAIL (reply goes to the visitor).
+ *    The visitor receives a short confirmation email (fixed text, at most one per address every 6 hours).
+ *    Columns "source / medium / campaign / referrer" say where the visitor came from.
+ *    Columns "statut" and "notes" are yours: follow each request there (Nouveau → Contacté → Proposition → Gagné / Perdu).
  *  - After changing this code: Deploy → Manage deployments → Edit → Version: New version.
  */
 
@@ -45,8 +50,10 @@ var ALLOWED = {
 var REQUIRED = ['type', 'discipline', 'title_fr', 'context_fr', 'action_fr'];
 
 var LEADS_SHEET = 'Demandes';
-var LEAD_HEADERS = ['created', 'lang', 'name', 'email', 'phone', 'company', 'country', 'service', 'message', 'page'];
-var LEAD_LIMITS = { lang: 2, name: 100, email: 150, phone: 40, company: 120, country: 80, service: 40, service_label: 80, message: 3000, page: 300 };
+var LEAD_HEADERS = ['created', 'lang', 'name', 'email', 'phone', 'company', 'country', 'service', 'message', 'page',
+  'source', 'medium', 'campaign', 'referrer', 'statut', 'notes'];
+var LEAD_LIMITS = { lang: 2, name: 100, email: 150, phone: 40, company: 120, country: 80, service: 40, service_label: 80, message: 3000, page: 300,
+  source: 60, medium: 60, campaign: 100, referrer: 120 };
 
 /** Run once from the editor: creates the sheet and its header row. */
 function setup() {
@@ -54,6 +61,7 @@ function setup() {
   [[SHEET_NAME, HEADERS], [LEADS_SHEET, LEAD_HEADERS]].forEach(function (t) {
     var sh = ss.getSheetByName(t[0]) || ss.insertSheet(t[0]);
     if (sh.getLastRow() === 0) { sh.appendRow(t[1]); sh.setFrozenRows(1); }
+    else if (sh.getLastColumn() < t[1].length) { sh.getRange(1, 1, 1, t[1].length).setValues([t[1]]); }   // new columns added by an update
   });
   return 'OK';
 }
@@ -113,9 +121,12 @@ function lead_(data, lock) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(l.email)) return json_({ ok: false, error: 'email' });
   l.created = new Date().toISOString();
   l.service = l.service_label || l.service;
+  l.statut = 'Nouveau';
+  l.notes = '';
   lock.waitLock(10000);
   leadsSheet_().appendRow(LEAD_HEADERS.map(function (h) { return safe_(l[h]); }));
-  var to = PropertiesService.getScriptProperties().getProperty('NOTIFY_EMAIL');
+  var props = PropertiesService.getScriptProperties();
+  var to = props.getProperty('NOTIFY_EMAIL');
   if (to) {
     MailApp.sendEmail({
       to: to,
@@ -125,11 +136,60 @@ function lead_(data, lock) {
       body: [
         'Nom : ' + l.name, 'Courriel : ' + l.email, 'Téléphone : ' + (l.phone || '—'),
         'Entreprise : ' + (l.company || '—'), 'Pays : ' + (l.country || '—'), 'Besoin : ' + (l.service || '—'),
-        'Langue : ' + (l.lang || '—'), '', l.message, '', 'Page : ' + l.page
+        'Langue : ' + (l.lang || '—'), '', l.message, '',
+        'Provenance : ' + (l.source || '—') + (l.medium ? ' / ' + l.medium : '') + (l.campaign ? ' / ' + l.campaign : ''),
+        'Page : ' + l.page
       ].join('\n')
     });
   }
-  return json_({ ok: true });
+  var ack = props.getProperty('AUTO_REPLY') !== 'non' && autoReply_(l, to, props.getProperty('BOOKING_URL'));
+  return json_({ ok: true, ack: ack });
+}
+
+/**
+ * Confirmation email to the visitor. Fixed text only: nothing the visitor typed is echoed back,
+ * so the form cannot be used to send someone else a custom message. One per address every 6 hours.
+ */
+function autoReply_(l, replyTo, booking) {
+  try {
+    var cache = CacheService.getScriptCache();
+    var key = 'ack:' + l.email.toLowerCase();
+    if (cache.get(key)) return false;
+    if (MailApp.getRemainingDailyQuota() < 20) return false;      // keep the daily quota for your own notifications
+    var en = l.lang === 'en';
+    var lines = en ? [
+      'Hello,', '',
+      'Thank you for your message. We have received your request.', '',
+      'What happens next:',
+      '1. We review your request.',
+      '2. We get back to you within 48 hours, with a proposal or questions.',
+      '3. Drawings, photos or files to add? Just reply to this email.'
+    ] : [
+      'Bonjour,', '',
+      'Merci pour votre message. Nous avons bien reçu votre demande.', '',
+      'La suite :',
+      '1. Nous étudions votre demande.',
+      '2. Nous revenons vers vous sous 48 h, avec une proposition ou des questions.',
+      '3. Des plans, des photos ou des fichiers à joindre ? Répondez simplement à ce courriel.'
+    ];
+    if (/^https:\/\//i.test(booking || '')) {
+      lines.push(en ? '4. Prefer to talk it through? Book a 30-minute call: ' + booking
+                    : '4. Envie d’en parler de vive voix ? Réservez un appel de 30 minutes : ' + booking);
+    }
+    lines.push('', en ? 'The Tyrian Energy team' : 'L’équipe Tyrian Energy');
+    var mail = {
+      to: l.email,
+      name: 'Tyrian Energy',
+      subject: en ? 'Tyrian Energy — we have received your request' : 'Tyrian Energy — nous avons bien reçu votre demande',
+      body: lines.join('\n')
+    };
+    if (replyTo) mail.replyTo = replyTo;
+    MailApp.sendEmail(mail);
+    cache.put(key, '1', 21600);
+    return true;
+  } catch (err) {
+    return false;
+  }
 }
 
 function leadsSheet_() {
